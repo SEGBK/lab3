@@ -2,11 +2,15 @@
 # Contains all build information to make life easier.
 
 SRC  = lib/*.java
+EXM = example/Main
 DOCS = docs
 TEST = test/util/Runner
 
 all: clean
-	javac $(SRC)
+	javac $(SRC) $(EXM).java
+
+run: all
+	java $(EXM)
 
 $(DOCS): .PHONY
 	javadoc $(SRC) -d $(DOCS)
