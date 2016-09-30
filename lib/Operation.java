@@ -6,7 +6,7 @@
 
 package lib;
 
-abstract class Operation {
+public abstract class Operation {
     private String name;
 
     /**
