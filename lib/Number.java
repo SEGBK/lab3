@@ -51,13 +51,19 @@ public class Number {
     }
 
     /**
+     * @returns true if the number has no digits
+     */
+    public boolean isEmpty() {
+        return this.state.length() == 0;
+    }
+
+    /**
      * Undo last digit.
      * @returns the Number object for chaining
      */
     public Number back() {
-        int length = this.state.length();
-        if (length > 0) {
-            this.state = this.state.substring(0, length - 1);
+        if (!this.isEmpty()) {
+            this.state = this.state.substring(0, this.state.length() - 1);
         }
 
         return this;
@@ -68,6 +74,6 @@ public class Number {
      * @returns a double value
      */
     public double pop() {
-        return this.state.length() == 0 ? 0.0 : Double.parseDouble(this.state);
+        return this.isEmpty() ? 0.0 : Double.parseDouble(this.state);
     }
 }

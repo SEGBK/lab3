@@ -16,6 +16,7 @@ public class NumberTest extends Test {
     public void test(Runnable end) throws Exception {
         Number num = new Number();
 
+        Test.equal(num.isEmpty(), true, "should be empty by default");
         Test.equal(num.pop(), 0.0, "should pop empty number as zero");
         Test.equal(num.hasDecimal(), false, "should not have decimal by default");
 
@@ -29,6 +30,7 @@ public class NumberTest extends Test {
         Test.equal(num.push('.'), num, "should continue building after pop");
         Test.equal(num.push('1').push('4').pop(), 3.14, "should pop with decimal");
         Test.equal(num.hasDecimal(), true, "should find decimal in 3.14");
+        Test.equal(num.isEmpty(), false, "should not be empty with 3.14");
 
         Test.equal(new Number(Math.PI+"").pop(), Math.PI, "should push and pop Math.PI");
 
