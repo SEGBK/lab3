@@ -5,7 +5,7 @@
 
 package lib;
 
-class Number {
+public class Number {
     private String state;
     private boolean hasDecimal;
 
@@ -42,7 +42,7 @@ class Number {
     public Number push(char digit) {
         // add digit to string
         if (!this.hasDecimal || digit != '.') {
-            this.hasDecimal = this.hasDecimal || digit != '.';
+            this.hasDecimal = this.hasDecimal || digit == '.';
             this.state += digit;
         }
 
@@ -68,6 +68,6 @@ class Number {
      * @returns a double value
      */
     public double pop() {
-        return Double.parseDouble(this.state);
+        return this.state.length() == 0 ? 0.0 : Double.parseDouble(this.state);
     }
 }
