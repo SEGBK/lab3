@@ -17,7 +17,8 @@ public final class Runner {
                  * All the objects below should implement
                  * the interface Test.
                  */
-                new OperationTest()
+                new OperationTest(),
+                new NumberTest()
             };
 
             public void run(Boolean success) {
