@@ -11,7 +11,7 @@ all: clean
 $(DOCS): .PHONY
 	javadoc $(SRC) -d $(DOCS)
 
-test: .PHONY
+test: clean .PHONY
 	javac $(TEST).java
 	java $(TEST)
 
