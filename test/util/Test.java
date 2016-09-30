@@ -3,9 +3,9 @@
  * An abstract class describing a runnable test.
  */
 
-package test;
+package test.util;
 
-abstract class Test {
+public abstract class Test {
     private String name;
     private static int passed, attempted;
     private final static TimeoutHandler timeout = new TimeoutHandler(3000);

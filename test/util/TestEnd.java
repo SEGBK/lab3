@@ -3,9 +3,9 @@
  * A runnable to signal the end of a test.
  */
 
-package test;
+package test.util;
 
-abstract class TestEnd {
+public abstract class TestEnd {
     /**
      * Method to call when the test has ended.
      * @param passed a boolean signifying if the test passed.

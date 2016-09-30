@@ -4,7 +4,7 @@
  * a boolean as final.
  */
 
-package test;
+package test.util;
 
 class FBool {
     private boolean state = false;

@@ -3,7 +3,7 @@
  * Handles timeouts for tests to force hanging tests to fail.
  */
 
-package test;
+package test.util;
 
 import java.util.Timer;
 import java.util.TimerTask;

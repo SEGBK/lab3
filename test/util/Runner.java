@@ -3,7 +3,9 @@
  * Runs tests and contains test helpers.
  */
 
-package test;
+package test.util;
+
+import test.*;
 
 public final class Runner {
     public static void main(String[] args) {
@@ -15,7 +17,7 @@ public final class Runner {
                  * All the objects below should implement
                  * the interface Test.
                  */
-                // ...
+                new OperationTest()
             };
 
             public void run(Boolean success) {

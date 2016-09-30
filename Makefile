@@ -3,19 +3,19 @@
 
 SRC  = lib/*.java
 DOCS = docs
-TEST = test/Runner
+TEST = test/util/Runner
 
-all:
+all: clean
 	javac $(SRC)
 
 $(DOCS): .PHONY
 	javadoc $(SRC) -d $(DOCS)
 
 test: .PHONY
-	javac test/*.java
+	javac $(TEST).java
 	java $(TEST)
 
 clean:
-	rm -f *.class lib/*.class test/*.class
+	rm -f *.class lib/*.class test/*.class test/util/*.class
 
 .PHONY:
