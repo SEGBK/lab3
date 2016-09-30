@@ -7,7 +7,7 @@ package lib;
 
 import java.util.ArrayList;
 
-class Calculator {
+public class Calculator {
     private Operation[] SupportedOperations = new Operation[] {
         // list of instantiated operation objects go here
     };
@@ -96,27 +96,4 @@ class Calculator {
         Number n = new Number();
         return n.push(start);
     }
-
-    /**
-     * Calculator c = new Calculator();
-     * // ...
-     * c.push(2).push("+").push(2).pop() == 4;
-     * c.eval("2+2") = 4;
-     * c.isEmpty() == true;
-     * c.history(); // returns an ArrayList of ...
-     * // ...
-     * // pushes of additional decimals will be ignored,
-     * // only the very first will be used
-     * Number pi = c.number("3").push(".").push("1").push("4").pop() == 3.14;
-     * pi = c.number("3").push(".").push("1").push("5").back().push("4").pop() == 3.14;
-     * c.push(pi).push("*").push(2).pop() == 6.28;
-     * // ...
-     * Number number = c.number(); 
-     * onBtnClick() {
-     *    number.push(txt.value);
-     * }
-     * onEquals() {
-     *    txt.value = number.pop()+"";
-     * }
-     */
 }
