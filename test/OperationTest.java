@@ -13,7 +13,7 @@ public class OperationTest extends Test {
         super("test lib.Operation");
     }
 
-    public void test(Runnable end) throws Exception {
+    public void test(Runnable end) throws Throwable {
         Test.equal(new TestOperation().getName(), "n", "should expose name properly");
         end.run();
     }

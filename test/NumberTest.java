@@ -13,7 +13,7 @@ public class NumberTest extends Test {
         super("test lib.Number");
     }
 
-    public void test(Runnable end) throws Exception {
+    public void test(Runnable end) throws Throwable {
         Number num = new Number();
 
         Test.equal(num.isEmpty(), true, "should be empty by default");
