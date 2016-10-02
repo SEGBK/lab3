@@ -5,7 +5,7 @@
 
     <EditText
         android:layout_width="wrap_content"
-        android:layout_height="75dp"
+        android:layout_height="100dp"
         android:inputType="textPersonName"
         android:ems="10"
         android:layout_alignParentTop="true"
@@ -23,11 +23,25 @@
     <Button
         android:text="clear"
         android:layout_width="wrap_content"
-        android:layout_height="75dp"
+        android:layout_height="100dp"
         android:id="@+id/btn_clear"
         android:background="@color/transparent"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/prev_equation"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textAlignment="viewEnd"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_horizontal_margin" />
 
 </RelativeLayout>

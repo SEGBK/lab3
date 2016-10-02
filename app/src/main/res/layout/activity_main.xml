@@ -30,17 +30,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/primary">
-
             <Button
                 android:text="+"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
                 android:id="@+id/btn_add"
                 android:layout_weight="1"
                 android:background="@color/transparent"
                 android:textColor="@android:color/white"
-                android:textSize="24sp" />
-
+                android:textSize="24sp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true" />
             <Button
                 android:text="-"
                 android:layout_width="wrap_content"
