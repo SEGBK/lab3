@@ -7,7 +7,7 @@ package lib;
 
 public class Number {
     private String state;
-    private boolean hasDecimal;
+    private boolean hasDecimal, isNegative;
 
     /**
      * Creates a new number instance.
@@ -15,6 +15,7 @@ public class Number {
     public Number() {
         this.state = "";
         this.hasDecimal = false;
+        this.isNegative = false;
     }
 
     /**
@@ -23,8 +24,9 @@ public class Number {
      * @param number a string representation of the value
      */
     public Number(String number) {
-        this.state = number;
         this.hasDecimal = number.indexOf(".") != -1;
+        this.isNegative = number.charAt(0) == '-';
+        this.state = this.isNegative ? number.substring(1) : number;
     }
 
     /**
@@ -32,6 +34,22 @@ public class Number {
      */
     public boolean hasDecimal() {
         return this.hasDecimal;
+    }
+
+    /**
+     * @returns true if the number is a negative
+     */
+    public boolean isNegative() {
+        return this.isNegative;
+    }
+
+    /**
+     * Flips the switch on negative/positive.
+     * @returns the Number object for chaining
+     */
+    public Number neg() {
+        this.isNegative = !this.isNegative;
+        return this;
     }
 
     /**
