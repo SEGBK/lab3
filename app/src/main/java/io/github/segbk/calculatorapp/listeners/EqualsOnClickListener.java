@@ -15,10 +15,10 @@ import android.widget.TextView;
 public class EqualsOnClickListener implements OnClickListener {
 
     private Context context;
-    private EditText screen;
+    private TextView screen;
     private TextView previousequation;
 
-    public EqualsOnClickListener(Context context, EditText screen, TextView previousequation) {
+    public EqualsOnClickListener(Context context, TextView screen, TextView previousequation) {
         this.context = context;
         this.screen = screen;
         this.previousequation = previousequation;
@@ -26,7 +26,7 @@ public class EqualsOnClickListener implements OnClickListener {
 
     @Override
     public void onClick(View view) {
-        Editable s = screen.getText();
+        String s = screen.getText().toString();
         previousequation.setText(s);
         screen.setText("");
     }

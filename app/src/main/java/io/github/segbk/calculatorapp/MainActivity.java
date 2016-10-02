@@ -16,11 +16,11 @@ import io.github.segbk.calculatorapp.listeners.EqualsOnClickListener;
 public class MainActivity extends AppCompatActivity {
 
     private List<Button> Buttons = new ArrayList<Button>();
-    private EditText screen;
     private Button EqualsButton;
     private Button ClearButton;
     private TextView PreviousEquation;
-    int[] IDs =
+    private TextView screen;
+    private int[] IDs =
             {R.id.btn_one,R.id.btn_two, R.id.btn_three,
             R.id.btn_four, R.id.btn_five, R.id.btn_six,
             R.id.btn_seven, R.id.btn_eight, R.id.btn_nine,
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         PreviousEquation = (TextView)findViewById(R.id.prev_equation);
-        screen = (EditText)findViewById(R.id.text_screen);
+        screen = (TextView)findViewById(R.id.text_screen);
 
         EqualsButton = (Button)findViewById(R.id.btn_equals);
         EqualsButton.setOnClickListener(new EqualsOnClickListener(this,screen,PreviousEquation));
