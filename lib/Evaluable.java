@@ -20,6 +20,13 @@ public class Evaluable {
     }
 
     /**
+     * @returns true if number stack is not empty
+     */
+    public boolean empty() {
+        return this.nStack.empty();
+    }
+
+    /**
      * Adds a new Number to the stack.
      * @param number the number to add
      * @returns the Evaluable object for chaining
