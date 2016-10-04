@@ -24,6 +24,7 @@ public class EvaluableTest extends Test {
 
         Test.equal(e.pop(), 0.0, "evaluation should be zero by default");
         Test.equal(e.push(TWO).push(ADD).push(TWO), e, ".push() should chain");
+        Test.equal(e.toString(), "2 + 2", "should create readable form");
         Test.equal(e.pop(), 4.0, "2 + 2 = 4");
         tmpstr = e.serialize();
         Test.equal(new Evaluable(tmpstr).pop(), 4.0, "should serialize and deserialize properly");
@@ -34,6 +35,7 @@ public class EvaluableTest extends Test {
                 .push(MLY)
                 .push(TWO);
         tmpstr = tmp.serialize();
+        Test.equal(tmp.toString(), "2 + 2 * 2", "should create readable form");
         Test.equal(
             tmp.pop(),
             6.0,

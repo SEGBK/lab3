@@ -12,7 +12,7 @@ public class Evaluable {
     private Stack<Operation> oStack;
 
     private final char DELIM = '\0';
-    private String serialized = "";
+    private String readable = "", serialized = "";
 
     /**
      * Creates a new Evaluable object.
@@ -57,6 +57,13 @@ public class Evaluable {
 
         this.nStack.push(val);
         this.serialized += "n" + val + DELIM;
+
+        if (val == (int)val) {
+            this.readable += ((int)val) + " ";
+        } else {
+            this.readable += val + " ";
+        }
+
         return this;
     }
 
@@ -67,6 +74,7 @@ public class Evaluable {
      */
     public Evaluable push(Operation operation) {
         this.oStack.push(operation);
+        this.readable += operation.getName() + " ";
         this.serialized += "o" + operation.getName() + DELIM;
         return this;
     }
@@ -126,5 +134,13 @@ public class Evaluable {
      */
     public String serialize() {
         return this.serialized;
+    }
+
+    /**
+     * Get readable serialized form.
+     * @returns string containing readable operations
+     */
+    public String toString() {
+        return this.readable.substring(0, this.readable.length() - 1);
     }
 }
