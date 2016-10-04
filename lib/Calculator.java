@@ -16,14 +16,16 @@ public class Calculator {
         new Subtract()
     };
 
+    // create an Evaluable stack for processing
+    private Evaluable evaluable = new Evaluable();
+
     /**
      * Adds a numerical value to the stack as a Number object.
      * @param number the numerical value to add as a Number object
      * @returns the Calculator object for chaining
      */
-    public Calculator push(Number number) {
-        // ...
-
+    public Calculator push(lib.Number number) {
+        this.evaluable.push(number);
         return this;
     }
 
@@ -34,7 +36,7 @@ public class Calculator {
      * @returns the Calculator object for chaining
      */
     private Calculator push(Operation operation) {
-        // TODO: write functionality
+        this.evaluable.push(operation);
         return this;
     }
 
@@ -44,7 +46,7 @@ public class Calculator {
      * @returns the Calculator object for chaining
      */
     public Calculator push(double value) {
-        return this.push(new Number(value+""));
+        return this.push(new lib.Number(value+""));
     }
 
     /**
@@ -54,15 +56,30 @@ public class Calculator {
      * @returns the Calculator object for chaining
      */
     public Calculator push(String operation) throws UnsupportedOperation {
+        Operation o = this.getOperationByName(operation);
+
+        // throw error if this operation has not been implemented
+        if (o == null) {
+            throw new UnsupportedOperation(operation);
+        }
+
+        return this.push(o);
+    }
+
+    /**
+     * Grabs an operation by name.
+     * @param operation the string representing the operation name
+     * @returns the Operation object 
+     */
+    public Operation getOperationByName(String operation) {
         // search for the appropriate operation
         for (Operation o : Calculator.SupportedOperations) {
             if (o.getName().equals(operation)) {
-                return this.push(o);
+                return o;
             }
         }
 
-        // throw error if this operation has not been implemented
-        throw new UnsupportedOperation(operation);
+        return null;
     }
 
     /**
@@ -70,8 +87,9 @@ public class Calculator {
      * @returns the numerical value of the operation result
      */
     public double pop() {
-        // TOOD: write functionality
-        return 0.0;
+        double result = this.evaluable.pop();
+        this.evaluable = new Evaluable();
+        return result;
     }
 
     /**
@@ -80,16 +98,40 @@ public class Calculator {
      * @returns the result of the operations.
      */
     public double eval(String string) {
-        // TODO: write functionality
-        return 0.0;
+        lib.Number tmp = new lib.Number();
+        Evaluable e = new Evaluable();
+        boolean unpushed = false;
+
+        for (int i = 0; i < string.length(); i ++) {
+            String c = string.substring(i, i + 1);
+
+            if (c.matches("[0-9.]")) {
+                tmp.push(c.charAt(0));
+                unpushed = true;
+            } else {
+                e.push(tmp);
+                tmp = new lib.Number();
+                unpushed = false;
+
+                for (int j = 1; (i + j) < string.length(); j ++) {
+                    if (string.substring(i + j, i + j + 1).matches("[0-9.]")) {
+                        e.push(this.getOperationByName(string.substring(i, i + j)));
+                        i += j - 1;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (unpushed) e.push(tmp);
+        return e.pop();
     }
 
     /**
      * @returns true if operations are currently pending
      */
-    public boolean isEmpty() {
-        // TODO: write functionality
-        return false;
+    public boolean empty() {
+        return this.evaluable.empty();
     }
 
     /**
@@ -97,8 +139,8 @@ public class Calculator {
      * @param string the first digit of the number
      * @returns a new Number object
      */
-    public Number number(char start) {
-        Number n = new Number();
+    public lib.Number number(char start) {
+        lib.Number n = new lib.Number();
         return n.push(start);
     }
 }

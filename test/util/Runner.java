@@ -19,7 +19,8 @@ public final class Runner {
                  */
                 new OperationTest(),
                 new NumberTest(),
-                new EvaluableTest()
+                new EvaluableTest(),
+                new CalculatorTest()
             };
 
             public void run(Boolean success) {
