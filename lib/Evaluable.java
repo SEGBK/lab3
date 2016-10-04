@@ -11,12 +11,33 @@ public class Evaluable {
     private Stack<Double> nStack;
     private Stack<Operation> oStack;
 
+    private final char DELIM = '\0';
+    private String serialized = "";
+
     /**
      * Creates a new Evaluable object.
      */
     public Evaluable() {
         this.nStack = new Stack<Double>();
         this.oStack = new Stack<Operation>();
+    }
+
+    /**
+     * Reconstructs an Evaluable object from the
+     * serialized string.
+     * @param state a string received by calling .serialize()
+     */
+    public Evaluable(String state) {
+        this.nStack = new Stack<Double>();
+        this.oStack = new Stack<Operation>();
+
+        for (String part : state.split(DELIM + "")) {
+            if (part.charAt(0) == 'n') {
+                this.push(new Number( part.substring(1) ));
+            } else {
+                this.push(Calculator.getOperationByName( part.substring(1) ));
+            }
+        }
     }
 
     /**
@@ -32,7 +53,10 @@ public class Evaluable {
      * @returns the Evaluable object for chaining
      */
     public Evaluable push(Number number) {
-        this.nStack.push(number.pop());
+        double val = number.pop();
+
+        this.nStack.push(val);
+        this.serialized += "n" + val + DELIM;
         return this;
     }
 
@@ -43,6 +67,7 @@ public class Evaluable {
      */
     public Evaluable push(Operation operation) {
         this.oStack.push(operation);
+        this.serialized += "o" + operation.getName() + DELIM;
         return this;
     }
 
@@ -93,5 +118,13 @@ public class Evaluable {
         // at the end, the next stack should have the
         // final result on top of it
         return nnStack.pop();
+    }
+
+    /**
+     * Serializes object to a string for reconstruction.
+     * @returns a string containing the components of the operations
+     */
+    public String serialize() {
+        return this.serialized;
     }
 }
