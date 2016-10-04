@@ -56,7 +56,7 @@ public class Calculator {
      * @returns the Calculator object for chaining
      */
     public Calculator push(String operation) throws UnsupportedOperation {
-        Operation o = this.getOperationByName(operation);
+        Operation o = Calculator.getOperationByName(operation);
 
         // throw error if this operation has not been implemented
         if (o == null) {
@@ -74,7 +74,7 @@ public class Calculator {
      */
     public Calculator push(char c) throws UnsupportedOperation {
         String operation = c + "";
-        Operation o = this.getOperationByName(operation);
+        Operation o = Calculator.getOperationByName(operation);
 
         // throw error if this operation has not been implemented
         if (o == null) {
@@ -89,7 +89,7 @@ public class Calculator {
      * @param operation the string representing the operation name
      * @returns the Operation object 
      */
-    public Operation getOperationByName(String operation) {
+    public static Operation getOperationByName(String operation) {
         // search for the appropriate operation
         for (Operation o : Calculator.SupportedOperations) {
             if (o.getName().equals(operation)) {
@@ -133,7 +133,7 @@ public class Calculator {
 
                 for (int j = 1; (i + j) < string.length(); j ++) {
                     if (string.substring(i + j, i + j + 1).matches("[0-9.]")) {
-                        e.push(this.getOperationByName(string.substring(i, i + j)));
+                        e.push(Calculator.getOperationByName(string.substring(i, i + j)));
                         i += j - 1;
                         break;
                     }
