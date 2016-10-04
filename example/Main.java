@@ -8,7 +8,7 @@ package example;
 import lib.Calculator;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) {try{
         Calculator calc = new Calculator();
 
         // simple chained calculations
@@ -19,7 +19,7 @@ public class Main {
 
         // you can treat the calculator as a stack,
         // for all expected Stack methods
-        assertOrDie(calc.isEmpty() == true);
+        assertOrDie(calc.empty() == true);
 
         // numbers can be dynamically created digit-by-digit
         // using characters
@@ -33,7 +33,7 @@ public class Main {
         // on the calculator
         lib.Number pi = calc.number('3').push('.').push('1').push('4');
         assertOrDie(calc.push(pi).push('*').push(2).pop() == 6.28);
-    }
+    }catch(Throwable e){System.out.format("error: %s\n",e.getMessage());}}
 
     private static void assertOrDie(boolean value) {
         if (!value) {
