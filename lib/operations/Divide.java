@@ -9,7 +9,7 @@ import lib.Operation;
 
 public class Divide extends Operation {
     public Divide() {
-        super("-");
+        super("/");
     }
 
     /**
