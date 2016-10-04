@@ -5,11 +5,15 @@
 
 package lib;
 
-import java.util.ArrayList;
+import lib.operations.*;
 
 public class Calculator {
-    private Operation[] SupportedOperations = new Operation[] {
-        // list of instantiated operation objects go here
+    // the order is important for evaluation
+    public final static Operation[] SupportedOperations = new Operation[] {
+        new Multiply(),
+        new Divide(),
+        new Add(),
+        new Subtract()
     };
 
     /**
@@ -18,7 +22,8 @@ public class Calculator {
      * @returns the Calculator object for chaining
      */
     public Calculator push(Number number) {
-        // TODO: write functionality.
+        // ...
+
         return this;
     }
 
@@ -50,7 +55,7 @@ public class Calculator {
      */
     public Calculator push(String operation) throws UnsupportedOperation {
         // search for the appropriate operation
-        for (Operation o : this.SupportedOperations) {
+        for (Operation o : Calculator.SupportedOperations) {
             if (o.getName().equals(operation)) {
                 return this.push(o);
             }
