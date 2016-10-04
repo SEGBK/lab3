@@ -67,6 +67,24 @@ public class Calculator {
     }
 
     /**
+     * Adds an operation to the stack where the operation
+     * is a character.
+     * @param operation the character representing the operation name
+     * @returns the Calculator object for chaining
+     */
+    public Calculator push(char c) throws UnsupportedOperation {
+        String operation = c + "";
+        Operation o = this.getOperationByName(operation);
+
+        // throw error if this operation has not been implemented
+        if (o == null) {
+            throw new UnsupportedOperation(operation);
+        }
+
+        return this.push(o);
+    }
+
+    /**
      * Grabs an operation by name.
      * @param operation the string representing the operation name
      * @returns the Operation object 
