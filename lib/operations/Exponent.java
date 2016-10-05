@@ -9,7 +9,7 @@ import lib.Operation;
 
 public class Exponent extends Operation {
     public Exponent() {
-        super("e");
+        super("^");
     }
 
     /**
