@@ -19,8 +19,8 @@ public class EvaluableTest extends Test {
                    THREE = new lib.Number("3");
         String tmpstr;
         
-        Operation ADD = Calculator.SupportedOperations[2],
-                  MLY = Calculator.SupportedOperations[0];
+        Operation ADD = Calculator.getOperationByName("+"),
+                  MLY = Calculator.getOperationByName("*");
 
         Test.equal(e.pop(), 0.0, "evaluation should be zero by default");
         Test.equal(e.push(TWO).push(ADD).push(TWO), e, ".push() should chain");
