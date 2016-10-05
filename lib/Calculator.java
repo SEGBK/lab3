@@ -11,10 +11,11 @@ import java.util.ArrayList;
 public class Calculator {
     // the order is important for evaluation
     public final static Operation[] SupportedOperations = new Operation[] {
-        new Multiply(),
-        new Divide(),
-        new Add(),
-        new Subtract()
+        new Exponent(), // E
+        new Divide(),   // D
+        new Multiply(), // M
+        new Add(),      // A
+        new Subtract()  // S
     };
 
     // create an Evaluable stack for processing
