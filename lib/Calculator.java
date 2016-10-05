@@ -6,6 +6,7 @@
 package lib;
 
 import lib.operations.*;
+import java.util.ArrayList;
 
 public class Calculator {
     // the order is important for evaluation
@@ -18,6 +19,10 @@ public class Calculator {
 
     // create an Evaluable stack for processing
     private Evaluable evaluable = new Evaluable();
+
+    // history management
+    private ArrayList<String> historyKeys = new ArrayList<String>();
+    private ArrayList<Double> historyValues = new ArrayList<Double>();
 
     /**
      * Adds a numerical value to the stack as a Number object.
@@ -105,9 +110,23 @@ public class Calculator {
      * @returns the numerical value of the operation result
      */
     public double pop() {
-        double result = this.evaluable.pop();
+        // save evaluable to history
+        this.historyKeys.add(this.evaluable.toString());
+        this.historyValues.add(this.evaluable.pop());
+
+        // allocate new stack
         this.evaluable = new Evaluable();
-        return result;
+
+        // return saved result
+        return this.historyValues.get( this.historyValues.size() - 1 );
+    }
+
+    /**
+     * Fetches a record of the history.
+     * @returns an array of readable strings of previously evaluated stacks
+     */
+    public String[] history() {
+        return (String[])this.historyKeys.toArray();
     }
 
     /**
@@ -116,6 +135,10 @@ public class Calculator {
      * @returns the result of the operations.
      */
     public double eval(String string) {
+        // if we have the result cached, we should just return that
+        int resIndex = this.historyKeys.indexOf(string);
+        if (resIndex > -1) return this.historyValues.get(resIndex);
+
         lib.Number tmp = new lib.Number();
         Evaluable e = new Evaluable();
         boolean unpushed = false;
