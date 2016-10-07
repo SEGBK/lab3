@@ -18,7 +18,9 @@ public final class Runner {
                  * the interface Test.
                  */
                 new OperationTest(),
-                new NumberTest()
+                new NumberTest(),
+                new EvaluableTest(),
+                new CalculatorTest()
             };
 
             public void run(Boolean success) {

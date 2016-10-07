@@ -19,6 +19,7 @@ public class NumberTest extends Test {
         Test.equal(num.isEmpty(), true, "should be empty by default");
         Test.equal(num.pop(), 0.0, "should pop empty number as zero");
         Test.equal(num.hasDecimal(), false, "should not have decimal by default");
+        Test.equal(num.isNegative(), false, "should not be negative by default");
 
         num.back();
         Test.equal(true, true, "should not error for .back() on empty number");
@@ -33,6 +34,8 @@ public class NumberTest extends Test {
         Test.equal(num.isEmpty(), false, "should not be empty with 3.14");
 
         Test.equal(new Number(Math.PI+"").pop(), Math.PI, "should push and pop Math.PI");
+        Test.equal(new Number("-1").isNegative(), true, "should recognize negatives from constructor");
+        Test.equal(new Number().push('1').neg().isNegative(), true, "should recognize negatives from toggle");
 
         end.run(); 
     }
