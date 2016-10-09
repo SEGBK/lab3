@@ -13,6 +13,8 @@ import io.github.segbk.calculatorapp.listeners.ButtonOnClickListener;
 import io.github.segbk.calculatorapp.listeners.ClearButtonOnClickListener;
 import io.github.segbk.calculatorapp.listeners.EqualsOnClickListener;
 
+import lib.*;
+
 public class MainActivity extends AppCompatActivity {
 
     private List<Button> Buttons = new ArrayList<Button>();
