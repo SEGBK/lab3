@@ -31,6 +31,10 @@ public class ButtonOnClickListener implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        if (EqualsOnClickListener.lastWasCalcualted){
+            screen.setText("");
+            EqualsOnClickListener.lastWasCalcualted = false;
+        }
         String s = screen.getText().toString();
         if (btn.getText().equals("X") || btn.getText().equals("+") || btn.getText().equals("-") || btn.getText().equals("÷")) {
             s += (" ");

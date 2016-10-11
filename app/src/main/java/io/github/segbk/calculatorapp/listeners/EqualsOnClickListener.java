@@ -20,6 +20,7 @@ public class EqualsOnClickListener implements OnClickListener {
     private TextView screen;
     private TextView previousequation;
     private Calculator calc;
+    public static boolean lastWasCalcualted;
 
     public EqualsOnClickListener(Context context, TextView screen, TextView previousequation) {
         this.context = context;
@@ -36,5 +37,6 @@ public class EqualsOnClickListener implements OnClickListener {
         s = s.replace(" ","");
         previousequation.setText(s + "=");
         screen.setText(String.valueOf(calc.eval(s)));
+        lastWasCalcualted = true;
     }
 }
