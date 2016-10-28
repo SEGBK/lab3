@@ -83,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/btn_one"
-                android:background="@color/transparent"
+                android:background="@drawable/btn_drawable"
                 android:layout_weight="1"
                 android:textColor="@android:color/white"
                 android:textSize="24sp" />

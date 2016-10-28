@@ -37,9 +37,19 @@ public class ButtonOnClickListener implements View.OnClickListener {
         }
         String s = screen.getText().toString();
         if (btn.getText().equals("X") || btn.getText().equals("+") || btn.getText().equals("-") || btn.getText().equals("÷")) {
-            s += (" ");
-            s += (btn.getText());
-            s += (" ");
+            CharSequence scr = screen.getText();
+            if (screen.getText().length() > 2){
+                if (scr.charAt(s.length() - 2) != 'X' && scr.charAt(s.length() - 2) != '+' && scr.charAt(s.length() - 2) != '-' && scr.charAt(s.length() - 2) != '÷'){
+                    s += (" ");
+                    s += (btn.getText());
+                    s += (" ");
+                }
+            }
+            else{
+                s += (" ");
+                s += (btn.getText());
+                s += (" ");
+            }
         } else if (NumberCounter >= 3) {
             s += (",");
             s += (btn.getText());
